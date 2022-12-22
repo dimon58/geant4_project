@@ -44,7 +44,7 @@ G4VPhysicalVolume *SimpleGeometry::Construct() {
     auto *detector_box = new G4Box("detector_box", detector_width / 2, detector_height / 2, detector_length / 2);
     auto *detector_lv = new G4LogicalVolume(detector_box, detector_material, "detector_lv");
     new G4PVPlacement(
-            nullptr, G4ThreeVector(0., 0., 0.),
+            nullptr, G4ThreeVector(detector_width / 2, -detector_height / 2, detector_length / 2),
             detector_lv, "detector_pv", logicWorld,
             true, 0, checkOverlaps
     );

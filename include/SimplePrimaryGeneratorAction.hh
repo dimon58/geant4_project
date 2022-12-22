@@ -3,6 +3,7 @@
 
 #include "G4VUserPrimaryGeneratorAction.hh"
 #include "G4GeneralParticleSource.hh"
+#include <G4ParticleGun.hh>
 #include "globals.hh"
 
 class G4Event;
@@ -17,10 +18,10 @@ public:
 
     static SimplePrimaryGeneratorAction *GetPointer() { return fPtr; }
 
-    const G4GeneralParticleSource *GetParticleGun() const { return fParticleGun; }
+    const G4ParticleGun *GetParticleGun() const { return fParticleGun; }
 
 private:
-    G4GeneralParticleSource *fParticleGun; // pointer a to G4 gun class
+    G4ParticleGun *fParticleGun; // pointer a to G4 gun class
     static SimplePrimaryGeneratorAction *fPtr;
 };
 
