@@ -5,7 +5,6 @@
 #include "G4RunManager.hh"
 #include "SimpleRootWriter.hh"
 
-#include "configs.hh"
 
 SimpleEventAction::SimpleEventAction()
         : G4UserEventAction(), fPrintModulo(0) {}
@@ -17,7 +16,7 @@ void SimpleEventAction::BeginOfEventAction(const G4Event *event) {
     SimpleRootWriter::GetPointer()->ResetEdep();
 
     G4long total = G4RunManager::GetRunManager()->GetCurrentRun()->GetNumberOfEventToBeProcessed();
-    fPrintModulo = G4int(total / MESSAGE_EVENT_RATE);
+    fPrintModulo = G4int(total / 20);
     if (fPrintModulo < 1) fPrintModulo = 1;
 
     G4int eventNb = event->GetEventID() + 1;
