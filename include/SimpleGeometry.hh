@@ -14,9 +14,9 @@ class SimpleGeometry : public G4VUserDetectorConstruction {
 public:
     SimpleGeometry();
 
-    virtual ~SimpleGeometry();
+    ~SimpleGeometry() override;
 
-    virtual G4VPhysicalVolume *Construct();
+    G4VPhysicalVolume *Construct() override;
 
     G4LogicalVolume *GetScoringVolume() const { return fScoringVolume; }
 

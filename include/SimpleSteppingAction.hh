@@ -8,7 +8,7 @@ class SimpleSteppingAction : public G4UserSteppingAction {
 public:
     SimpleSteppingAction();
 
-    virtual ~SimpleSteppingAction();
+    ~SimpleSteppingAction() override;
 
-    virtual void UserSteppingAction(const G4Step *);
+    void UserSteppingAction(const G4Step *) override;
 };

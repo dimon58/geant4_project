@@ -8,11 +8,11 @@ class SimpleEventAction : public G4UserEventAction {
 public:
     SimpleEventAction();
 
-    virtual ~SimpleEventAction();
+    ~SimpleEventAction() override;
 
-    virtual void BeginOfEventAction(const G4Event *event);
+    void BeginOfEventAction(const G4Event *event) override;
 
-    virtual void EndOfEventAction(const G4Event *event);
+    void EndOfEventAction(const G4Event *event) override;
 
 private:
     G4int fPrintModulo;

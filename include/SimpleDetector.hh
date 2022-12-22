@@ -10,16 +10,16 @@ class G4HCofThisEvent;
 
 class SimpleDetector : public G4VSensitiveDetector {
 public:
-    SimpleDetector(const G4String &name);
+    explicit SimpleDetector(const G4String &name);
 
-    virtual ~SimpleDetector();
+    ~SimpleDetector() override;
 
     // methods from base class
-    virtual void Initialize(G4HCofThisEvent *hitCollection);
+    void Initialize(G4HCofThisEvent *hitCollection) override;
 
-    virtual G4bool ProcessHits(G4Step *step, G4TouchableHistory *history);
+    G4bool ProcessHits(G4Step *step, G4TouchableHistory *history) override;
 
-    virtual void EndOfEvent(G4HCofThisEvent *hitCollection);
+    void EndOfEvent(G4HCofThisEvent *hitCollection) override;
 
 private:
 

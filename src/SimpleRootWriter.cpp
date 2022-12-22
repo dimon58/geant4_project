@@ -3,7 +3,7 @@
 
 SimpleRootWriter *SimpleRootWriter::pInstance = nullptr;
 
-void SimpleRootWriter::Initialize(std::filesystem::path path, bool SaveTree) {
+void SimpleRootWriter::Initialize(const std::filesystem::path& path, bool SaveTree) {
 
     file = new TFile(path.c_str(), "RECREATE");
 

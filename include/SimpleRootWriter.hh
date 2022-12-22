@@ -16,7 +16,7 @@ using namespace std;
 
 class SimpleRootWriter {
 public:
-    void Initialize(std::filesystem::path path, bool SaveTree = false);
+    void Initialize(const std::filesystem::path& path, bool SaveTree = false);
 
     void Fill() const;                // store an event
     void Finalize();    // write tree to a file
