@@ -5,22 +5,24 @@
 #include "G4RunManager.hh"
 #include "SimpleRootWriter.hh"
 
-SimpleEventAction::SimpleEventAction()
-        : G4UserEventAction() {}
+#include "configs.hh"
 
-SimpleEventAction::~SimpleEventAction() {}
+SimpleEventAction::SimpleEventAction()
+        : G4UserEventAction(), fPrintModulo(0) {}
+
+SimpleEventAction::~SimpleEventAction() = default;
 
 void SimpleEventAction::BeginOfEventAction(const G4Event *event) {
 
     SimpleRootWriter::GetPointer()->ResetEdep();
 
     G4long total = G4RunManager::GetRunManager()->GetCurrentRun()->GetNumberOfEventToBeProcessed();
-    fPrintModulo = G4int(total / 20);
+    fPrintModulo = G4int(total / MESSAGE_EVENT_RATE);
     if (fPrintModulo < 1) fPrintModulo = 1;
 
-    G4int eventNb = event->GetEventID();
+    G4int eventNb = event->GetEventID() + 1;
     if (eventNb % fPrintModulo == 0) {
-        G4cout << "\n---> Begin of event: " << eventNb << G4endl;
+        G4cout << "---> Event " << eventNb << "/" << total << G4endl;
     }
 }
 
