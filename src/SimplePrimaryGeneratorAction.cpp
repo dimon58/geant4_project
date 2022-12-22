@@ -8,6 +8,7 @@
 #include "G4PhysicalConstants.hh"
 #include "cmath"
 
+#define REAL_SPECTOR
 
 #define PARTICLE "mu-"
 
@@ -36,6 +37,18 @@ SimplePrimaryGeneratorAction::~SimplePrimaryGeneratorAction() {
 
 void SimplePrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
 
+#ifdef REAL_SPECTOR
+    G4double e = -10;
+    while ((e < 1.5) or (e > 4)) {
+        e = G4RandGauss(new CLHEP::MTwistEngine, 3.0935, 70.423).fire();
+    }
+//    G4double e = G4RandGauss(new CLHEP::MTwistEngine, 3.0935, 70.423).fire();
+
+
+    fParticleGun->SetParticleEnergy(pow(10,e) * GeV);
+#endif
+
+
     // Генерируем частицы с одинаковой энергией = energy,
     // которые гарантировано (если не создадут ливень) пройдут через детектор.
     // Частица будет иметь случайное направление,
@@ -51,6 +64,7 @@ void SimplePrimaryGeneratorAction::GeneratePrimaries(G4Event *anEvent) {
 
     fParticleGun->SetParticleMomentumDirection(G4ThreeVector(ctg_a, -1, ctg_b));
     fParticleGun->SetParticlePosition(G4ThreeVector(x0 - dy * ctg_a, dy, z0 - dy * ctg_b));
+
 
     fParticleGun->GeneratePrimaryVertex(anEvent);
 }
