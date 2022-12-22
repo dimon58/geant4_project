@@ -60,6 +60,7 @@ set(GEANT4_PROJECT_SCRIPTS
         macros/init.mac
         macros/init_vis.mac
         macros/vis.mac
+        macros/run.mac
         )
 
 foreach (_script ${GEANT4_PROJECT_SCRIPTS})
