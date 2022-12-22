@@ -1,0 +1,4 @@
+
+/random/setSeeds 1 1
+
+/run/beamOn 20000
